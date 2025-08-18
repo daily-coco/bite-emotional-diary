@@ -5,6 +5,8 @@ import New from './pages/New';
 import Diary from './pages/Diary';
 import Notfound from './pages/Notfound';
 import { getEmotionImage } from './util/get-emotion-image';
+import Header from './components/Header';
+import Button from './components/Button';
 
 function App() {
   const nav = useNavigate();
@@ -14,6 +16,12 @@ function App() {
   };
   return (
     <>
+      <Header
+        title='감정일기'
+        leftChild={<Button text={'L'} />}
+        rightChild={<Button text={'R'} />}
+      />
+
       <button onClick={onClickButton}>New 페이지로 이동 </button>
 
       <img src={getEmotionImage(1)} />

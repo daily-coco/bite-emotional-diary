@@ -1,0 +1,26 @@
+.Header {
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+.Header > div {
+  display: flex;
+}
+.header_center {
+  width: 50%;
+  font-size: 25px;
+  justify-content: space-between;
+}
+.header_left,
+.header_right {
+  width: 25%;
+}
+
+.header_left {
+  justify-content: flex-start;
+}
+.header_right {
+  justify-content: flex-end;
+}
