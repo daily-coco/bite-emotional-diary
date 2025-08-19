@@ -1,19 +1,26 @@
 import { getEmotionImage } from '../util/get-emotion-image.js';
 import Button from './Button';
 import './DiaryItem.css';
-const DiaryItem = () => {
-  const emotionId = 1;
+import { useNavigate } from 'react-router-dom';
+const DiaryItem = ({ id, createDate, emotionId, content }) => {
+  const nav = useNavigate();
+
   return (
     <div className='DiaryItem'>
-      <div className={`img_section img_section_${emotionId}`}>
-        <img src={getEmotionImage(1)} />
+      <div
+        onClick={() => nav(`/diary/${id}`)}
+        className={`img_section img_section_${emotionId}`}
+      >
+        <img src={getEmotionImage(emotionId)} />
       </div>
-      <div className='info_section'>
-        <div className='created_date'>{new Date().toLocaleDateString()}</div>
-        <div className='content'>content{}</div>
+      <div className='info_section' onClick={() => nav(`/diary/${id}`)}>
+        <div className='created_date'>
+          {new Date(createDate).toLocaleDateString()}
+        </div>
+        <div className='content'>{content}</div>
       </div>
       <div className='button_section'>
-        <Button text={'수정하기'} />
+        <Button onClick={() => nav(`/edit/${id}`)} text={'수정하기'} />
       </div>
     </div>
   );
