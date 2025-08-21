@@ -4,30 +4,8 @@ import './Editor.css';
 import EmotionItem from './EmotionItem';
 //[6/Edit] useEffect 추가
 import { useState, useEffect } from 'react';
-
-// 이것도 외부로 빼서 관리할 수 있는 부분이니깐 빼두기 (고도화때)
-const emotionList = [
-  {
-    emotionId: 1,
-    emotionName: '최고',
-  },
-  {
-    emotionId: 2,
-    emotionName: '좋음',
-  },
-  {
-    emotionId: 3,
-    emotionName: '그럭저럭',
-  },
-  {
-    emotionId: 4,
-    emotionName: '나쁨',
-  },
-  {
-    emotionId: 5,
-    emotionName: '끔찍함',
-  },
-];
+import { emotionList } from '../util/constants';
+import { getStringDate } from '../util/get-stringed-date';
 
 // [4] 작성하기 버튼 관련 이벤트 연결을 위한 프롭스 추가 (*onSubmit)
 // [5/Edit] initData 추가
@@ -55,22 +33,6 @@ const Editor = ({ initData, onSubmit }) => {
     }
   }, [initData]);
 
-  //[2-1] 문자열로 데이터 객체 변환
-  const getStringDate = (targetDate) => {
-    //날짜 - YYYY-MM-DD
-    let year = targetDate.getFullYear();
-    let month = targetDate.getMonth() + 1;
-    let date = targetDate.getDate();
-
-    // 날짜 자리수 맞춰주기(10 이하)
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
-  };
   //[2-2] 변경될 때마다 데이터 픽커 값 반영 및 저장될 수 있도록 이벤트 핸들러 추가
   const onChangeInput = (e) => {
     console.log(e.target.name); // 어떤 요소의 입력이 들어왔는지 체크
