@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import './Editor.css';
 import EmotionItem from './EmotionItem';
-import { useState } from 'react';
+//[6/Edit] useEffect 추가
+import { useState, useEffect } from 'react';
 
 // 이것도 외부로 빼서 관리할 수 있는 부분이니깐 빼두기 (고도화때)
 const emotionList = [
@@ -29,7 +30,8 @@ const emotionList = [
 ];
 
 // [4] 작성하기 버튼 관련 이벤트 연결을 위한 프롭스 추가 (*onSubmit)
-const Editor = ({ onSubmit }) => {
+// [5/Edit] initData 추가
+const Editor = ({ initData, onSubmit }) => {
   // const emotionId = 1; // 임시용(확인용)
   //[1] 사용자가 input에 입력한 값들을 저장하는 state
 
@@ -42,6 +44,16 @@ const Editor = ({ onSubmit }) => {
 
   // 취소하기 버튼 클릭 시
   const nav = useNavigate();
+
+  //[7/Edit] useEffect 추가
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+        createDate: new Date(Number(initData.createDate)),
+      });
+    }
+  }, [initData]);
 
   //[2-1] 문자열로 데이터 객체 변환
   const getStringDate = (targetDate) => {
@@ -139,6 +151,7 @@ const Editor = ({ onSubmit }) => {
           name='content'
           //[3] 이벤트 연결
           onChange={onChangeInput}
+          value={input.content}
         ></textarea>
       </section>
 
