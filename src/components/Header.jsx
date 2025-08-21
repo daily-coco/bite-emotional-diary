@@ -1,5 +1,8 @@
 import './Header.css';
+
 const Header = ({ title, leftChild, rightChild }) => {
+  // 현재 날짜 Date 기준 State
+
   return (
     <header className='Header'>
       <div className='header_left'>{leftChild}</div>

@@ -11,7 +11,7 @@
 .header_center {
   width: 50%;
   font-size: 25px;
-  justify-content: space-between;
+  justify-content: center;
 }
 .header_left,
 .header_right {

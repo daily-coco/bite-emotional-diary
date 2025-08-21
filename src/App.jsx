@@ -12,15 +12,21 @@ import Button from './components/Button';
 const mockData = [
   {
     id: 1,
-    createDate: new Date().getTime(),
+    createDate: new Date('2025-08-19').getTime(),
     emotionId: 1,
     content: '1번 일기 내용',
   },
   {
     id: 2,
-    createDate: new Date().getTime(),
+    createDate: new Date('2025-08-18').getTime(),
     emotionId: 2,
     content: '2번 일기 내용',
+  },
+  {
+    id: 3,
+    createDate: new Date('2025-07-17').getTime(),
+    emotionId: 3,
+    content: '3번 일기 내용',
   },
 ];
 
@@ -39,8 +45,8 @@ function reducer(state, action) {
   }
 }
 
-const DiaryStateContext = createContext();
-const DiaryDispatchContext = createContext();
+export const DiaryStateContext = createContext();
+export const DiaryDispatchContext = createContext();
 
 function App() {
   const idRef = useRef(3);
@@ -77,33 +83,6 @@ function App() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          onCreate(new Date().getTime, 1, 'helloTest');
-        }}
-      >
-        일기추가테스트
-      </button>
-      <button
-        onClick={() => {
-          onUpdate(3, new Date().getTime, 3, 'hello UpdateTest');
-        }}
-      >
-        일기수정테스트
-      </button>
-      <button
-        onClick={() => {
-          onDelete(1);
-        }}
-      >
-        일기삭제 테스트
-      </button>
-
-      <Header
-        title='감정일기'
-        leftChild={<Button text={'L'} />}
-        rightChild={<Button text={'R'} />}
-      />
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
           <Routes>
