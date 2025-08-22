@@ -6,30 +6,6 @@ import New from './pages/New';
 import Diary from './pages/Diary';
 import Edit from './pages/Edit';
 import Notfound from './pages/Notfound';
-import Header from './components/Header';
-import Button from './components/Button';
-
-const mockData = [
-  {
-    id: 1,
-    createDate: new Date('2025-08-19').getTime(),
-    emotionId: 1,
-    content: '1번 일기 내용',
-  },
-  {
-    id: 2,
-    createDate: new Date('2025-08-18').getTime(),
-    emotionId: 2,
-    content: '2번 일기 내용',
-  },
-  {
-    id: 3,
-    createDate: new Date('2025-07-17').getTime(),
-    emotionId: 3,
-    content: '3번 일기 내용',
-  },
-];
-
 function reducer(state, action) {
   switch (action.type) {
     case 'CREATE':
@@ -80,6 +56,8 @@ function App() {
       id,
     });
   };
+
+  //Storage
 
   return (
     <>
