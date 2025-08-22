@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import DiaryList from '../components/DiaryList';
 import { DiaryStateContext } from '../App';
+import usePageTitle from '../hooks/usePageTitle';
 
 // 전달받은 데이터로 해당하는 달의 일기만 필터 해 주는 함수
 const getMonthlyData = (pivotDate, data) => {
@@ -31,6 +32,8 @@ const Home = () => {
   const data = useContext(DiaryStateContext);
   const [pivotDate, setPivotDate] = useState(new Date());
   const monthlyData = getMonthlyData(pivotDate, data);
+
+  usePageTitle(`감정 일기장`);
 
   const onDecreaseMonth = () => {
     //날짜를 한달 뒤로 보내기 기능

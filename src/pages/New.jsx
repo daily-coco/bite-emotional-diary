@@ -4,6 +4,7 @@ import Editor from '../components/Editor';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { DiaryDispatchContext } from '../App';
+import usePageTitle from '../hooks/usePageTitle';
 
 const New = () => {
   const nav = useNavigate();
@@ -15,6 +16,8 @@ const New = () => {
     // useNavigate(to, option) : option 자리에 replace를 적어주면
     // 1) to로 적은 url로 이동 + 2) 뒤로 가기 방지 시키는 옵션임
   };
+
+  usePageTitle('새 일기 쓰기');
 
   return (
     <div>
